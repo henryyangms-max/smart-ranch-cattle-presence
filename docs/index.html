@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>智能牧场 | 牛脸检测验证台</title>
+  <title>智能牧场 | V5.2 牛脸检测验证台</title>
   <link rel="stylesheet" href="./style.css">
   <script src="./ort.wasm.min.js" defer></script>
-  <script src="./inference.js" defer></script>
-  <script src="./app.js" defer></script>
+  <script src="./inference.js?v=5.2" defer></script>
+  <script src="./app.js?v=5.2" defer></script>
 </head>
 <body>
   <main>
@@ -44,7 +44,7 @@
         <p id="dimensions" hidden></p>
         <div id="metrics" class="metrics" hidden>
           <div><span>检测耗时</span><strong id="latency"></strong></div>
-          <div><span>分数门槛</span><strong id="threshold"></strong></div>
+          <div><span>出框门槛</span><strong id="threshold"></strong></div>
         </div>
         <ol id="results" class="results"></ol>
         <section class="output-actions" id="output-actions" hidden>

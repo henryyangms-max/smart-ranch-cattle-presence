@@ -1,14 +1,14 @@
 "use strict";
 
 window.cowFace = (() => {
-  const modelHash = "d9d337fe0395953bf149c36c268888fd3755cab60e955d015231e3f3e542af7b";
+  const modelHash = "1afed908bd122f6a1c427945bd2a3a5f596bdf630d2c00ccadeb6ba578b7091d";
   let ready;
 
   async function load() {
     if (ready) return ready;
     ready = (async () => {
       const [settings, weights] = await Promise.all(["cow-face-416.json", "cow-face-416.onnx"].map(async name => {
-        const response = await fetch(new URL(name, document.baseURI));
+        const response = await fetch(new URL(name + "?v=5.2", document.baseURI));
         if (!response.ok) throw new Error("模型下载失败，请刷新页面后重试。");
         return name.endsWith(".json") ? response.json() : response.arrayBuffer();
       }));

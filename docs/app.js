@@ -28,7 +28,7 @@ function paint(data) {
   list.replaceChildren();
   const font = Math.max(12, width * 0.025);
   detections.forEach(({bbox: [x, y, r, b], score}, index) => {
-    const label = `${index + 1}  ${(100 * score).toFixed(1)}%`;
+    const label = `${index + 1}  ${(100 * score).toFixed(1)} 分`;
     const tabY = Math.max(0, y - 1.24 * font);
     overlay.append(
       svgNode("rect", {x, y, width: r-x, height: b-y, fill: "none", stroke: "#2095ff",
@@ -41,7 +41,7 @@ function paint(data) {
     const title = document.createElement("span");
     const value = document.createElement("b");
     title.textContent = `牛脸 ${index + 1}`;
-    value.textContent = (100 * score).toFixed(1) + "%";
+    value.textContent = (100 * score).toFixed(1) + " 分";
     item.append(title, value);
     list.append(item);
   });
@@ -51,7 +51,7 @@ function paint(data) {
   get("dimensions").textContent = `${width} × ${height} 像素`;
   get("dimensions").hidden = false;
   get("latency").textContent = `${data.inference_ms} ms`;
-  get("threshold").textContent = `${(100 * data.threshold).toFixed(0)}%`;
+  get("threshold").textContent = `${(100 * data.threshold).toFixed(0)} 分`;
   get("metrics").hidden = false;
   get("output-actions").hidden = false;
   get("toggle").disabled = detections.length === 0;
@@ -132,6 +132,6 @@ get("download").addEventListener("click", () => {
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
-cowFace.load().then(({size}) => {
-  get("health").textContent = `轻量正脸版 V5 · ${(size/1000000).toFixed(2)} MB`;
+cowFace.load().then(({size,settings}) => {
+  get("health").textContent = `${settings.version} · ${(size/1000000).toFixed(2)} MB`;
 }).catch(() => { get("health").textContent = "模型加载失败，请刷新或换浏览器重试"; });

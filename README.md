@@ -1,16 +1,49 @@
-# 智能牧场 · 轻量牛脸检测
+# 智能牧场 · V5.2 轻量牛脸检测
 
-工作人员可在手机或电脑浏览器里选择一张实拍照片，查看每张牛脸的位置和分数。照片在当前设备处理。[打开在线测试网页](https://henryyangms-max.github.io/smart-ranch-cattle-presence/)
+选择一张实拍照片，模型为每张检出的牛脸返回位置框与综合检测分，网页以蓝框显示。未检出牛脸时返回空列表。在线演示在浏览器里处理照片。
 
-V5 的模型权重为 **5.38 MB**。完整包附有 ONNX 权重、同名配置、离线运行示例和逐图测试结果。开发者可在发布页单独下载权重与配置。[下载轻量模型包](https://github.com/henryyangms-max/smart-ranch-cattle-presence/releases/download/cow-face-mobile-v5/cow-face-mobile-v5.zip) · [V5 发布页](https://github.com/henryyangms-max/smart-ranch-cattle-presence/releases/tag/cow-face-mobile-v5)
+**[打开在线检测网页](https://henryyangms-max.github.io/smart-ranch-cattle-presence/)** · **[下载完整模型包](https://github.com/henryyangms-max/smart-ranch-cattle-presence/releases/download/cow-face-mobile-v5.2/cow-face-mobile-v5.2.zip)** · [V5.2 发布页](https://github.com/henryyangms-max/smart-ranch-cattle-presence/releases/tag/cow-face-mobile-v5.2)
 
-| 冻结模型的独立测试 | 成功照片 |
-|---|---:|
-| 单牛正脸，恰好一个框且位置正确 | **36/37（97.3%）** |
-| 两至三张牛脸，全部框准且无多框 | 7/16 |
-| 无牛脸，画面保持零框 | 9/17 |
+## 给负责搭验证网页的 AI
 
-这批正脸照片来自吉林公开资料。不同牧场的实拍效果还需现场复验。
+把本仓库链接和下面这段话一并发给 AI，即可使用本次交付的模型。
+
+> 请使用本仓库 V5.2 Release 的完整模型包搭建单张照片检测网页。复用包内的 detector.py 和 app.py，提供图片上传、原图蓝框、每框综合检测分，以及无牛脸时的零框结果。使用包内同名 JSON 的 0.35 出框门槛，坐标映射回 EXIF 转正的原图。先运行 static/example.jpg，验收应得到两个牛脸框。
+
+模型为一个 **7.34 MB** 的 ONNX 文件。运行所需参数全部在文件内。可分别取得[模型权重](https://github.com/henryyangms-max/smart-ranch-cattle-presence/releases/download/cow-face-mobile-v5.2/cow-face-416.onnx)、[配置](https://github.com/henryyangms-max/smart-ranch-cattle-presence/releases/download/cow-face-mobile-v5.2/cow-face-416.json)和[校验清单](https://github.com/henryyangms-max/smart-ranch-cattle-presence/releases/download/cow-face-mobile-v5.2/SHA256SUMS.txt)。完整包还含启动脚本、示例照片和逐图实测。
+
+解压模型包，进入 `mobile_cow_face_v52`，安装依赖后运行以下命令。网页监听本机的 8782 端口。
+
+```sh
+python -m pip install -r requirements.txt
+python app.py --port 8782
+```
+
+默认门槛在网页上显示为 35 分。分数未经概率校准。ONNX 文件的 SHA-256 为 `1afed908bd122f6a1c427945bd2a3a5f596bdf630d2c00ccadeb6ba578b7091d`。
+
+也可以直接克隆本仓库，从仓库根目录运行 Python 参考入口，命令会打印原图像素坐标、综合分，并保存蓝框图片。
+
+```sh
+python -m pip install -r requirements.txt
+python detector.py docs/example.jpg --output result.png
+```
+
+[Python 推理参考](detector.py) · [浏览器推理实现](docs/inference.js) · [V5.2 分组实测说明](V52-TESTING.md)
+
+## V5.2 实测
+
+| 整张照片的成功条件 | 已发布 V5 | V5.2 |
+|---|---:|---:|
+| 历史单牛正脸，框准且无多框 | 36/37 | 36/37 |
+| 历史多牛，所有可见牛脸都框准且无多框 | 7/16 | 7/16 |
+| 本轮新增单牛正脸，框准且无多框 | 21/22 | 21/22 |
+| 本轮新增人像，零框 | 27/34 | 33/34 |
+| 本轮新增鸡，零框 | 15/16 | 16/16 |
+| 本轮新增绵羊和山羊，零框 | 9/14 | 12/14 |
+| 本轮新增空景和物体，零框 | 9/9 | 9/9 |
+| 本轮新增合计 | 81/95 | **91/95（95.8%）** |
+
+新增组有 1 张正脸未判对，1 张人像和 2 张山羊误框。逐图标准为 IoU ≥ 0.50、一一匹配且无多余框。牧场实拍和目标手机性能有待现场验证。完整包的“实测”目录含逐图对照与错例。前一版轻量模型可在 [V5 历史发布](https://github.com/henryyangms-max/smart-ranch-cattle-presence/releases/tag/cow-face-mobile-v5)查看。
 
 ## 历史版本 · 牛与非牛判断模型
 

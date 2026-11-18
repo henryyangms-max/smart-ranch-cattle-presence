@@ -1,0 +1,10 @@
+侯现坤、黄小平、黄飞、豆子豪、郑寰宇、王晨洋、冯涛、刘梦艺。
+奶牛脸部及关键点检测数据集，V2，Science Data Bank，2024。
+DOI 10.57760/sciencedb.08745
+https://doi.org/10.57760/sciencedb.08745
+CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/
+
+本项目使用了 ScienceDB 的官方预览和原始 YOLO 标签，按序列重新分组，裁剪牛脸，
+将坐标转换到裁图，制作了训练时增强和可视化叠加，并用这些定位标注训练五点模型。
+原始归档、公开清单及来源元数据均指向上述发布者。

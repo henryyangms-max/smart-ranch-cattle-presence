@@ -1,0 +1,52 @@
+:root {
+  color-scheme:light; --paper:#f4f7fb; --card:#fff; --ink:#121f33; --quiet:#51637a;
+  --line:#dce5ef; --blue:#125bd6; --dark:#15263c; --focus:#156dff;
+  font-family:"Instrument Sans","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink)}
+main{max-width:1370px;padding:0 clamp(16px,5vw,70px) 48px;margin:auto}
+.top{display:flex;align-items:center;justify-content:space-between;height:68px;border-bottom:1px solid var(--line);gap:12px}
+.brand{font-size:15px;letter-spacing:.10em;text-decoration:none;font-weight:760;color:var(--ink)}
+.health{font-size:12px;color:var(--quiet);text-align:right;line-height:1.4}
+.health::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#27766b;margin-right:.55em;vertical-align:1px}
+.intro{padding:36px 0 25px}
+h1{margin:0;font-weight:780;font-size:clamp(32px,4vw,54px);letter-spacing:-.045em;line-height:1.13}
+.intro p{margin:12px 0 0;color:var(--quiet);line-height:1.6;font-size:clamp(14px,1.3vw,17px)}
+.workbench{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,320px);gap:20px;align-items:start}
+.workspace,aside{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.empty{min-height:375px;background:#eef3fa;color:#51637a;text-align:center;display:grid;justify-items:center;align-content:center;gap:8px}
+.empty p{color:var(--ink);font-size:19px;font-weight:680;margin:10px 0 2px}
+.empty span{font-size:14px}
+.crosshair{width:54px;height:45px;display:block;border:2px solid #4674bb;border-radius:10px;position:relative}
+.crosshair::before,.crosshair::after{position:absolute;content:"";background:#4674bb;top:50%;left:50%;transform:translate(-50%,-50%)}
+.crosshair::before{width:22px;height:2px}
+.crosshair::after{width:2px;height:22px}
+.workspace.dragging{outline:3px solid var(--focus);outline-offset:2px}
+.photo-view{display:grid;place-items:center;background:var(--dark);position:relative}
+.photo-view img{display:block;width:100%;height:auto}
+.photo-view svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.photo-toolbar{padding:14px 16px;display:flex;align-items:center;gap:12px;justify-content:space-between}
+#file-description{color:var(--quiet);font-size:12px;overflow-wrap:anywhere}
+.actions,.output-actions{display:flex;gap:8px;flex-wrap:wrap}
+button,.upload{font:inherit;font-size:14px;font-weight:670;min-height:42px;padding:9px 13px;border-radius:7px;line-height:1.5;cursor:pointer}
+.secondary{border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.secondary:hover{background:#eaf1fa}
+.upload{display:inline-block;position:relative;background:var(--blue);color:#fff;white-space:nowrap}
+.upload:hover{background:#0c4eba}
+.upload input{opacity:0;position:absolute;inset:0;width:100%;cursor:pointer}
+button:focus-visible,.upload:focus-within,a:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+aside{padding:21px}
+h2{font-size:17px;margin:0 0 14px;font-weight:750}
+.summary{font-size:22px;font-weight:750;line-height:1.35}
+.summary.error{color:#9c2437;font-size:17px}
+#dimensions{color:var(--quiet);font-size:13px;margin:6px 0 0}
+.metrics{display:grid;grid-template-columns:1fr 1fr;margin-top:18px;gap:10px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.metrics span{display:block;font-size:12px;color:var(--quiet);margin-bottom:5px}
+.metrics strong{font-size:15px}
+.results{list-style:none;padding:0;margin:0 0 12px}
+.results li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:8px;font-size:14px}
+.results b{color:var(--blue);font-variant-numeric:tabular-nums}
+@media (max-width:800px){.workbench{grid-template-columns:1fr}.intro{padding-top:26px}.empty{min-height:245px}}
+@media (max-width:480px){.photo-toolbar{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions>*{flex:1;text-align:center}.top{height:57px}}

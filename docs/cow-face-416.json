@@ -1,0 +1,34 @@
+{
+  "onnx": "v5-dev-selected.onnx",
+  "model": "cow-face-416.onnx",
+  "onnx_sha256": "d9d337fe0395953bf149c36c268888fd3755cab60e955d015231e3f3e542af7b",
+  "checkpoint_sha256": "8c01fdf10ec2544b285187be2e6c98c0308ac5b3878ec58177782ea2d1cfc834",
+  "epoch": 4,
+  "input_name": "images",
+  "output_name": "output0",
+  "input_size": 416,
+  "input_shape": [
+    1,
+    3,
+    416,
+    416
+  ],
+  "output_shape": [
+    1,
+    5,
+    3549
+  ],
+  "max_detections": 300,
+  "confidence": 0.05,
+  "nms_iou": 0.35,
+  "match_iou": 0.5,
+  "preprocess": "EXIF orientation, RGB /255 float32 NCHW, centered gray 114 aspect-preserving letterbox",
+  "coordinates": "YOLO xywh pixels in raw output, undo letterbox to source pixels after app NMS",
+  "threshold_status": "frozen development selection; independent field release pending",
+  "development_json_sha256": "892ca8e5869e1decd5b0a0f4f4bca1002db06eef145e07331c27a488de9162ab",
+  "version": "v5-dev-selected-compact",
+  "source_onnx_sha256": "414fef61c52be66a235a6d4c1ccef684ab9460456e828b26b4122faf86271ff1",
+  "packed_convolutions": 88,
+  "preserve_stem_and_head": false,
+  "storage": "int16 convolution weights, FP32 input/output and arithmetic"
+}

@@ -1,4 +1,18 @@
-# 智能牧场 · 牛与非牛判断模型
+# 智能牧场 · 轻量牛脸检测
+
+工作人员可在手机或电脑浏览器里选择一张实拍照片，查看每张牛脸的位置和分数。照片在当前设备处理。[打开在线测试网页](https://henryyangms-max.github.io/smart-ranch-cattle-presence/)
+
+V5 的模型权重为 **5.38 MB**。完整包附有 ONNX 权重、同名配置、离线运行示例和逐图测试结果。开发者可在发布页单独下载权重与配置。[下载轻量模型包](https://github.com/henryyangms-max/smart-ranch-cattle-presence/releases/download/cow-face-mobile-v5/cow-face-mobile-v5.zip) · [V5 发布页](https://github.com/henryyangms-max/smart-ranch-cattle-presence/releases/tag/cow-face-mobile-v5)
+
+| 冻结模型的独立测试 | 成功照片 |
+|---|---:|
+| 单牛正脸，恰好一个框且位置正确 | **36/37（97.3%）** |
+| 两至三张牛脸，全部框准且无多框 | 7/16 |
+| 无牛脸，画面保持零框 | 9/17 |
+
+这批正脸照片来自吉林公开资料。不同牧场的实拍效果还需现场复验。
+
+## 历史版本 · 牛与非牛判断模型
 
 第一阶段接收工作人员拍摄的一张整图，判断画面里有没有牛。确认有牛时交接原图，多目标时提示选择目标或重拍。个体牛号由项目第二阶段识别。
 

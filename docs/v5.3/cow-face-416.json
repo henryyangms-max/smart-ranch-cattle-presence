@@ -1,0 +1,10 @@
+{
+  "input_size": 416,
+  "confidence": 0.35,
+  "nms_iou": 0.35,
+  "max_detections": 300,
+  "onnx_sha256": "3b29d3a563267fbd548ba718add6f478cb755b6334e4c67d42cc4aae5107e531",
+  "source_onnx_sha256": "1afed908bd122f6a1c427945bd2a3a5f596bdf630d2c00ccadeb6ba578b7091d",
+  "version": "V5.3 羊马误框专项版",
+  "model": "cow-face-416.onnx"
+}

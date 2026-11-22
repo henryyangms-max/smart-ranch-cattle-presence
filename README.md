@@ -4,6 +4,10 @@
 
 **[打开在线检测网页](https://henryyangms-max.github.io/smart-ranch-cattle-presence/)** · **[下载完整模型包](https://github.com/henryyangms-max/smart-ranch-cattle-presence/releases/download/cow-face-mobile-v5.2/cow-face-mobile-v5.2.zip)** · [V5.2 发布页](https://github.com/henryyangms-max/smart-ranch-cattle-presence/releases/tag/cow-face-mobile-v5.2)
 
+## 羊马误框较多的场景
+
+常规正脸采集继续用 V5.2。若现场照片常混入羊或马，可单独试用 V5.3。在同批 304 张无牛照片上，误框从 47 张降到 35 张；188 张单牛正脸的严格贴合数从 109 张降到 96 张。[V5.3 工作人员下载与实测](https://github.com/henryyangms-max/smart-ranch-cattle-presence/releases/tag/cow-face-mobile-v5.3) · [V5.3 在线试图](https://henryyangms-max.github.io/smart-ranch-cattle-presence/v5.3/)
+
 ## 给负责搭验证网页的 AI
 
 把本仓库链接和下面这段话一并发给 AI，即可使用本次交付的模型。
